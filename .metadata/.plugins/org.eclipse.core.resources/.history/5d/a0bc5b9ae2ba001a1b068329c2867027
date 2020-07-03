@@ -1,0 +1,33 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dao;
+
+import java.io.Serializable;
+
+import com.jfsfeb.stockmanagementsystemjdbc.dto.DetailsOfStock;
+
+public class DAOInvestorImple implements DAOInvestor{
+
+	@Override
+	public boolean investorLogin(String emailId, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean sellStock(int stockId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean buyStock(DetailsOfStock stock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

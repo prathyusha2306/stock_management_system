@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;stockmanagementsystem&apos; to &apos;stockmanagementsystemspring&apos;" description="Rename resource &apos;stockmanagementsystem&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/stockmanagementsystem" name="stockmanagementsystemspring" stamp="1593686476084" updateReferences="true"/>
+</session>

@@ -1,0 +1,9 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dto;
+
+import lombok.ToString;
+
+public class AdminInfo {
+	private String adminEmail;
+	@ToString.Exclude
+	private String password;
+}

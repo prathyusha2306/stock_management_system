@@ -1,0 +1,117 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.jfsfeb.stockmanagementsystemjdbc.dto.DetailsOfStock;
+import com.jfsfeb.stockmanagementsystemjdbc.dto.Investor;
+import com.jfsfeb.stockmanagementsystemjdbc.exception.ExceptionSMS;
+import com.jfsfeb.stockmanagementsystemjdbc.utility.DBConnection;
+
+public class DAOManagerImple implements DAOManager {
+	DBConnection dbConnector = new DBConnection();
+
+	@Override
+	public boolean addStock(DetailsOfStock stockDetails) {
+		try (Connection conn = dbConnector.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(dbConnector.getQuery("stockDetails"));) {
+			pstmt.setInt(1, stockDetails.getStockId());
+			pstmt.setString(2, stockDetails.getStockName());
+			pstmt.setString(3, stockDetails.getStockType());
+			pstmt.setDouble(4, stockDetails.getStockPrice());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new ExceptionSMS("Stock Can't be Added, As it is Already Exists");
+		}
+		return true;
+	}
+
+	@Override
+	public boolean authenticateManager(String emailId, String password) {
+		Investor info = new Investor();
+
+		try (Connection connection = dbConnector.getConnection();
+				PreparedStatement statement = connection.prepareStatement(dbConnector.getQuery("loginCheckAdmin"));) {
+			statement.setString(1, emailId);
+			statement.setString(2, password);
+			try (ResultSet result = statement.executeQuery();) {
+				while (result.next()) {
+					info.setEmailId(result.getString("Emailid"));
+					info.setPassword(result.getString("password"));
+
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		throw new ExceptionSMS("Invalid Login Credentials, Please Enter Correctly");
+	}
+
+	@Override
+	public boolean removeStock(int id) {
+		try (Connection connection = dbConnector.getConnection();
+				PreparedStatement statement = connection.prepareStatement(dbConnector.getQuery("RemoveStock"));) {
+			statement.setInt(1, id);
+			int result = statement.executeUpdate();
+			if (result != 0) {
+				return true;
+			}
+
+		} catch (Exception e) {
+			throw new ExceptionSMS(e.getMessage());
+
+		}
+		throw new ExceptionSMS("Stock Can't Be Removed or Deleted Because it is not Present");
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		try (Connection conn = dbConnector.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(dbConnector.getQuery("changePassword"));) {
+			pstmt.setString(1, newPassword);
+			pstmt.setString(2, emailId);
+			pstmt.setString(3, oldPassword);
+			int count = pstmt.executeUpdate();
+			if (count != 0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		throw new ExceptionSMS("Unable to Update the Password due to Invalid Credentials");
+	}
+
+	@Override
+	public List<DetailsOfStock> viewstocks() {
+		List<DetailsOfStock> stocksInfo = new LinkedList<DetailsOfStock>();
+
+		try (Connection conn = dbConnector.getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet resultSet = stmt.executeQuery(dbConnector.getQuery("showBooks"));) {
+			while (resultSet.next()) {
+				DetailsOfStock stockDetails = new DetailsOfStock();
+				stockDetails.setStockId(resultSet.getInt("stock_id"));
+				stockDetails.setStockName(resultSet.getString("stockname"));
+				stockDetails.setStockType(resultSet.getString("stocktype"));
+				stockDetails.setStockPrice(resultSet.getDouble("stockproce"));
+				stocksInfo.add(stockDetails);
+			}
+
+			if (stocksInfo.isEmpty()) {
+				throw new ExceptionSMS("No Books Present in the Library");
+			} else {
+				return stocksInfo;
+			}
+		} catch (Exception e) {
+			throw new ExceptionSMS(e.getMessage());
+		}
+
+	}
+
+}

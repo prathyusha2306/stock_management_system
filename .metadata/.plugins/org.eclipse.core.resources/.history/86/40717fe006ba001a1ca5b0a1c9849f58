@@ -1,0 +1,11 @@
+package com.jsfsfeb.stockmanagementsystemcollections.dao;
+
+public interface AdminDAO {
+	boolean authenticateAdmin(String email, String password);
+
+	boolean addInvestor(Investor investor);
+	
+	boolean addCompanyManager(Manager manager);
+
+	List<Investor> viewInvestors();
+}

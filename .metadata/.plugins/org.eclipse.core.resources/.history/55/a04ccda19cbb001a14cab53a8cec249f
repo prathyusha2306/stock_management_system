@@ -1,0 +1,36 @@
+package com.jfsfeb.stockmanagementsystemhibernate.dao;
+
+import java.util.List;
+
+import com.jfsfeb.stockmanagementsystemhibernate.dto.Investor;
+import com.jfsfeb.stockmanagementsystemhibernate.dto.Manager;
+
+public class AdminDAOImple implements AdminDAO{
+
+	@Override
+	public boolean authenticateAdmin(String email, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addInvestor(Investor investor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addCompanyManager(Manager manager) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Investor> viewInvestors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

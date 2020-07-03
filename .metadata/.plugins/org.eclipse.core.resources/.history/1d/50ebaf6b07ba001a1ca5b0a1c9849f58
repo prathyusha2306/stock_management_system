@@ -1,0 +1,58 @@
+package com.jsfsfeb.stockmanagementsystemcollections.dao;
+
+import com.jsfsfeb.stockmanagementsystemcollections.dto.DetailsOfStock;
+import com.jsfsfeb.stockmanagementsystemcollections.dto.Investor;
+import com.jsfsfeb.stockmanagementsystemcollections.exception.ExceptionSMS;
+import com.jsfsfeb.stockmanagementsystemcollections.repository.SMSDataBase;
+
+public class DAOInvestorImple implements DAOInvestor{
+	 implements DAOInvester {
+
+			@Override
+			public boolean registerInvestor(Investor investor) {
+
+				for (Investor i : SMSDataBase.INVESTOR_INFOS) {
+					if ((i.getEmailId()).equals(investor.getEmailId())) {
+						return false;
+					}
+				}
+				SMSDataBase.INVESTOR_INFOS.add(investor);
+				return true;
+			}
+
+			@Override
+			public boolean investorLogin(String emailId, String password) {
+
+				for (Investor userInfo : SMSDataBase.INVESTOR_INFOS) {
+					if (userInfo.getEmailId().equalsIgnoreCase(emailId) && userInfo.getPassword().equals(password)) {
+						return true;
+					}
+				}
+				throw new ExceptionSMS("Invalid Login Credentials,Please enter Correctly");
+			}
+
+			@Override
+			public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+				for (Investor userInfo : SMSDataBase.INVESTOR_INFOS) {
+					if ((userInfo.getEmailId().equalsIgnoreCase(emailId)) && (userInfo.getPassword().equals(oldPassword))) {
+						userInfo.setPassword(newPassword);
+						return true;
+					}
+				
+			}
+				throw new ExceptionSMS("Password Can't be Changed Due To Invalid Credentials");
+
+			}
+
+			@Override
+			public boolean sellStock(int stockId) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			public boolean buyStock(DetailsOfStock stock) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+}

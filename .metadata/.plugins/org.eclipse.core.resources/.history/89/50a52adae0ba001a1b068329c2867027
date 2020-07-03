@@ -1,0 +1,16 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dto;
+
+import lombok.ToString;
+import java.io.Serializable;
+import lombok.Data;
+
+@Data
+@SuppressWarnings("serial")
+public class Manager implements Serializable {
+	private String managerName;
+	private String managerEmailId;
+	@ToString.Exclude
+	private String managerPassword;
+	private int managerId;
+
+}

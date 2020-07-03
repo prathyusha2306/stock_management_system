@@ -1,0 +1,47 @@
+dburl=jdbc:mysql://localhost:3306/stockmanagement_db?user=prathyusha&password=root
+driver=com.mysql.jdbc.Driver
+
+#Admin Login
+loginCheckAdmin = select * from user_info where Emailid = ? and password = ? and role='admin'
+
+#investor Login
+loginCheckUser = select * from user_info where Emailid = ? and password = ? and role='investor'
+
+#manager Login
+loginCheckUser = select * from user_info where Emailid = ? and password = ? and role='manager'
+
+#Add User
+addInvestor = insert into user_info values(?,?,?,?,?,?)
+
+#Add User
+addManager = insert into user_info(user_id,name,mobile,password,emailid,role,company) values(?,?,?,?,?,?)
+
+
+#Show User
+showUsers = select * from user_info where Role ='investor'
+
+#Change Password
+changePassword = update user_info set password=? where email_id=? and password = ?
+
+#Add stock
+stockDetails = insert into stock_info values(?,?,?,?,?) 
+
+#Remove Stock
+removeStock = delete from stock_info where stock_id=?
+
+
+
+
+
+#Book Request
+checkAvailability = select * from stock_info where stock_id = ?
+requestStock = insert into stockrequest_info (user_id,stock_id) values(?,?)
+showRequests = select * from stockrequest_info;
+
+
+
+#Book Issue 
+getRequest = select * from stockrequest_info where id = ?
+getUser = select * from user_info where user_id = ?
+issueStock = update stockrequest_info set issued = true where id=?
+setBookAvailability = update stock_info set isAvailable = false where stock_id=?

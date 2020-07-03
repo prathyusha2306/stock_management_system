@@ -1,0 +1,5 @@
+package com.jsfsfeb.stockmanagementsystemcollections.dto;
+
+public class AdminInfo {
+
+}

@@ -1,0 +1,53 @@
+package com.jfsfeb.stockmanagementsystemcollections.dao;
+
+import java.util.List;
+
+import com.jfsfeb.stockmanagementsystemcollections.dto.AdminInfo;
+import com.jfsfeb.stockmanagementsystemcollections.dto.Investor;
+import com.jfsfeb.stockmanagementsystemcollections.dto.Manager;
+import com.jfsfeb.stockmanagementsystemcollections.exception.ExceptionSMS;
+import com.jfsfeb.stockmanagementsystemcollections.repository.SMSDataBase;
+
+public class AdminDAOImple implements AdminDAO{
+
+	@Override
+	public boolean authenticateAdmin(String email, String password) {
+		
+		for (AdminInfo adminInfo : SMSDataBase.ADMIN_INFOS) {
+			if (adminInfo.getAdminEmail().equalsIgnoreCase(email) && adminInfo.getPassword().equals(password)) {
+				return true;
+			}
+		}
+		throw new ExceptionSMS("Invalid Login Credentials, Please Enter Correctly");
+	}
+
+	@Override
+	public boolean addInvestor(Investor investor) {
+
+		for (Investor user : SMSDataBase.INVESTOR_INFOS) {
+			if (user.getInvestorId() == investor.getInvestorId() || user.getEmailId().equalsIgnoreCase(investor.getEmailId())) {
+				throw new ExceptionSMS("Cannot add New Investor, as Investor Already Exists");
+			}
+		}
+		SMSDataBase.INVESTOR_INFOS.add(investor);
+		return true;
+	}
+	@Override
+	public List<Investor> viewInvestors() {
+
+		return SMSDataBase.INVESTOR_INFOS;
+		
+	}
+
+	@Override
+	public boolean addCompanyManager(Manager manager) {
+		for (Manager user : SMSDataBase.MANAGER_INFOS) {
+			if (user.getManagerId() == manager.getManagerId() || user.getManagerEmailId().equalsIgnoreCase(manager.getManagerEmailId())) {
+				throw new ExceptionSMS("Cannot add New Manager, as Manager Already Exists");
+			}
+		}
+		SMSDataBase.MANAGER_INFOS.add(manager);
+		return true;
+	}
+
+}

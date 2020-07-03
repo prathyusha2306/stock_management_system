@@ -1,0 +1,41 @@
+package com.jfsfeb.stockmanagementsystemjdbc.service;
+
+import com.jfsfeb.stockmanagementsystemcollections.dao.DAOInvestor;
+import com.jfsfeb.stockmanagementsystemcollections.factory.SMSFactory;
+import com.jfsfeb.stockmanagementsystemcollections.validation.ValidationSMS;
+import com.jfsfeb.stockmanagementsystemjdbc.dto.Investor;
+
+public class InvestorServiceImple implements InvestorService {
+	private DAOInvestor dao = SMSFactory.getInvestorDAOImplInstance();
+	ValidationSMS validation = new ValidationSMS();
+
+	@Override
+	public boolean registerInvestor(Investor investor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean investorLogin(String emailId, String password) {
+		if (validation.validateEmail(emailId)) {
+			if (validation.validatePassword(password)) {
+
+				return dao.investorLogin(emailId, password);
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean stockRequest(int userId, int stockId) {
+		// TODO Auto-generated method stub
+		return ;
+	}
+
+}

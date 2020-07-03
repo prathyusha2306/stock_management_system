@@ -1,0 +1,5 @@
+package com.jsfsfeb.stockmanagementsystemcollections.validation;
+
+public class ValidationSMS {
+
+}

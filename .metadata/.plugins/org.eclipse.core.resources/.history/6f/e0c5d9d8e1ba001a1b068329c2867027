@@ -1,0 +1,7 @@
+package com.jfsfeb.stockmanagementsystemjdbc.exception;
+
+public class ExceptionSMS extends RuntimeException {
+	public ExceptionSMS(String msg) {
+		super(msg);
+}
+}

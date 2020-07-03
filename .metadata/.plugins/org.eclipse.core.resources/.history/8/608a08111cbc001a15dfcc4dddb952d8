@@ -1,0 +1,25 @@
+package com.jfsfeb.stockmanagementsystemhibernate.dto;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.Data;
+import lombok.ToString;
+@SuppressWarnings("serial")
+@Data
+@Entity
+@Table(name="user_info")
+public class Investor implements  Serializable {
+	@Column(name="user_Id")
+	private int investorId;
+	private String investorName;
+	private String emailId;
+	@ToString.Exclude
+	private String password;
+	private Long mobileNumber;
+	private String itemTaken;
+
+}

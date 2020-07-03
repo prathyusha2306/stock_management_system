@@ -1,0 +1,8 @@
+package com.jfsfeb.stockmanagementsystemcollections.factory;
+
+public class SMSFactory {
+
+	private SMSFactory() {
+
+	}
+}

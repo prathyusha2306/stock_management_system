@@ -1,0 +1,5 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dao;
+
+public class DAOManagerImple {
+
+}

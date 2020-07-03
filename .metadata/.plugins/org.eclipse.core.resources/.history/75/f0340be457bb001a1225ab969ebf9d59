@@ -1,0 +1,18 @@
+package com.jfsfeb.stockmanagementsystemhibernate.dto;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+import lombok.Data;
+import lombok.ToString;
+
+@SuppressWarnings("serial")
+@Data
+@Entity
+public class AdminInfo implements Serializable {
+	private String adminEmail;
+	@ToString.Exclude
+	private String password;
+
+}

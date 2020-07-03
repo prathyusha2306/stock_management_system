@@ -1,0 +1,47 @@
+package com.jfsfeb.stockmanagementsystemjdbc.service;
+
+import java.util.List;
+
+import com.jfsfeb.stockmanagementsystemjdbc.dao.DAOManager;
+import com.jfsfeb.stockmanagementsystemjdbc.dto.DetailsOfStock;
+import com.jfsfeb.stockmanagementsystemjdbc.factory.SMSFactory;
+import com.jfsfeb.stockmanagementsystemjdbc.validation.ValidationSMS;
+
+public class ManagerServiceImple implements ManagerService {
+	ValidationSMS validation = new ValidationSMS();
+	DAOManager manager = SMSFactory.getDAOManagerImpleInstance();
+	@Override
+	public boolean addStock(DetailsOfStock stockDetails) {
+		if (stockDetails != null) {
+			return manager.addStock(stockDetails);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean authenticateManager(String managerEmailId, String managerPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeStock(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<DetailsOfStock> viewstocks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

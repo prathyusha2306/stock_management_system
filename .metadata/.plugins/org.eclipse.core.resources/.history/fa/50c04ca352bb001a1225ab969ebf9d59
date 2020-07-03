@@ -1,0 +1,5 @@
+package com.jfsfeb.stockmanagementsystemhibernate.controller;
+
+public class SMSController {
+
+}

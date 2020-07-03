@@ -1,0 +1,14 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dto;
+
+import java.io.Serializable;
+
+import lombok.ToString;
+
+public class Investor implements Serializable{
+	private int investorId;
+	private String investorName;
+	private String emailId;
+	@ToString.Exclude
+	private String password;
+	private Long mobileNumber;
+}

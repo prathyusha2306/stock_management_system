@@ -1,0 +1,5 @@
+package com.jsfsfeb.stockmanagementsystemcollections.dao;
+
+public interface DAOManager {
+
+}

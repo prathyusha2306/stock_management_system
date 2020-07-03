@@ -1,0 +1,5 @@
+package com.jfsfeb.stockmanagementsystemjdbc.controller;
+
+public class MainController {
+
+}

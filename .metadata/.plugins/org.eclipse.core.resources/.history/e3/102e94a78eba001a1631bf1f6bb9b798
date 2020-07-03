@@ -1,0 +1,56 @@
+package com.jfsfeb.stockmanagementsystemcollections.dao;
+
+import com.jfsfeb.stockmanagementsystemcollections.dto.DetailsOfStock;
+import com.jfsfeb.stockmanagementsystemcollections.dto.Manager;
+import com.jfsfeb.stockmanagementsystemcollections.exception.ExceptionSMS;
+import com.jsfsfeb.stockmanagementsystemcollections.repository.SMSDataBase;
+
+public class DAOManagerImple implements DAOManager {
+
+	@Override
+	public boolean addStock(DetailsOfStock stockDetails) {
+		boolean add = true;
+		for (DetailsOfStock details : SMSDataBase.STOCK_DETAILS) {
+			if (details.getStockId() == details.getStockId()) {
+				throw new ExceptionSMS("Stock Can't Be Added, As Stock Id Already Exists");
+			}
+		}
+		SMSDataBase.STOCK_DETAILS.add(stockDetails);
+		return add;
+	}
+
+	@Override
+	public boolean removeStock(int id) {
+
+		for (DetailsOfStock details : SMSDataBase.STOCK_DETAILS) {
+			if (details.getStockId() == details.getStockId()) {
+				SMSDataBase.STOCK_DETAILS.remove(details);
+				return true;
+			}
+		}
+		throw new ExceptionSMS("Unable To Remove The Stock");
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		for (Manager manager : SMSDataBase.MANAGER_INFOS) {
+			if ((manager.getManagerEmailId().equalsIgnoreCase(emailId)) && (manager.getManagerPassword().equals(oldPassword))) {
+				manager.setManagerPassword(newPassword);
+				return true;
+			}
+		}
+
+		throw new ExceptionSMS("Password Can't be Changed Due To Invalid Credentials");
+	}
+
+	@Override
+	public boolean  authenticateManager(String managerEmailId, String managerPassword) {
+		for (Manager manager : SMSDataBase.MANAGER_INFOS) {
+			if (manager.getManagerEmailId().equalsIgnoreCase(managerEmailId) && manager.getManagerPassword().equals(managerPassword)) {
+				return true;
+			}
+		}
+		throw new ExceptionSMS("Invalid Login Credentials, Please Enter Correctly");
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.jsfsfeb.stockmanagementsystemcollections.repository;
+
+public class SMSDataBase {
+
+}

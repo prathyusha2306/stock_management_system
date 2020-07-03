@@ -1,0 +1,55 @@
+package com.jfsfeb.stockmanagementsystemhibernate.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
+import com.jfsfeb.stockmanagementsystemhibernate.dto.AdminInfo;
+import com.jfsfeb.stockmanagementsystemhibernate.dto.Investor;
+import com.jfsfeb.stockmanagementsystemhibernate.dto.Manager;
+import com.jfsfeb.stockmanagementsystemhibernate.exception.ExceptionSMS;
+
+public class AdminDAOImple implements AdminDAO {
+	EntityManagerFactory factory = null;
+
+	@Override
+	public boolean authenticateAdmin(String email, String password) {
+		EntityManager manager = null;
+		factory = Persistence.createEntityManagerFactory("TestPersistence");
+		manager = factory.createEntityManager();
+		String jpql = "select a from  LibraryUsers a where a.emailId = :emailId and a.password =:password";
+		TypedQuery<AdminInfo> query = manager.createQuery(jpql, AdminInfo.class);
+		query.setParameter("emailId", email);
+		query.setParameter("password", password);
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			throw new ExceptionSMS("Invalid Login Credentials, Please Enter Correctly");
+		} finally {
+			manager.close();
+			factory.close();
+		}
+	}
+
+	@Override
+	public boolean addInvestor(Investor investor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addCompanyManager(Manager manager) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Investor> viewInvestors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,14 @@
+dburl=jdbc:mysql://localhost:3306/stockmanagement_db?user=prathyusha&password=root
+driver=com.mysql.jdbc.Driver
+
+#Admin Login
+loginCheckAdmin = select * from user_info where Emailid = ? and password = ? and role='admin'
+
+#investor Login
+loginCheckUser = select * from user_info where emailid = ? and password = ? and role='investor'
+
+#manager Login
+loginCheckUser = select * from user_info where emailid = ? and password = ? and role='manager'
+
+#Add User
+addUser = insert into library_users(user_id,name,mobile,password,emailid,role,company) values(?,?,?,?,?,?)

@@ -1,0 +1,15 @@
+package com.jsfsfeb.stockmanagementsystemcollections.dao;
+
+public interface DAOInvestor {
+
+public boolean registerInvestor(Investor investor);
+	
+	boolean investorLogin(String emailId, String password);
+	
+	boolean changePassword(String emailId, String oldPassword, String newPassword);
+	
+	public boolean sellStock(int stockId);
+	
+	public boolean buyStock(DetailsOfStock stock);
+	
+}

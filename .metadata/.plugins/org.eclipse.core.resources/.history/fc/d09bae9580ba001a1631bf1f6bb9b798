@@ -1,0 +1,2 @@
+dburl=jdbc:mysql://localhost:3306/stock_db?user=prathyusha&password=root
+driver=com.mysql.jdbc.Driver

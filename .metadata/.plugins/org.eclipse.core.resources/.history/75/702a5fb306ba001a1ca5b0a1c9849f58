@@ -1,0 +1,13 @@
+package com.jsfsfeb.stockmanagementsystemcollections.dto;
+
+import java.io.Serializable;
+@Data
+@SuppressWarnings("serial")
+public class Manager implements Serializable {
+	private String managerName;
+	private String managerEmailId;
+	private String managerPassword;
+	private int managerId;
+	
+
+}

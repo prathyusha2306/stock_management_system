@@ -1,0 +1,9 @@
+package com.jfsfeb.stockmanagementsystemjdbc.controller;
+
+import com.jsfsfeb.stockmanagementsystemcollections.controller.SMSController;
+
+public class MainController {
+	public static void main(String[] args) {
+		SMSController.stockMangement();
+	}
+}

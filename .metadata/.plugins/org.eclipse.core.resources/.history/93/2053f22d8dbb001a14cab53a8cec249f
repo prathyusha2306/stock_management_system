@@ -1,0 +1,8 @@
+package com.jfsfeb.stockmanagementsystemjdbc.dto;
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class StockRequestInfo implements Serializable{ 
+
+}

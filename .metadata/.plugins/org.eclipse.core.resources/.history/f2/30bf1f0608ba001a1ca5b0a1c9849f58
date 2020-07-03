@@ -1,0 +1,4 @@
+package com.jsfsfeb.stockmanagementsystemcollections.services;
+
+public interface ManagerService {
+}

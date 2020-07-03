@@ -1,0 +1,50 @@
+package com.jfsfeb.stockmanagementsystemcollections.factory;
+
+import com.jsfsfeb.stockmanagementsystemcollections.dao.AdminDAO;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.AdminDAOImple;
+
+public class SMSFactory {
+
+	private SMSFactory() {
+
+	}
+
+	public static AdminDAO getAdminDAOImplInstance() {
+		AdminDAO dao = new AdminDAOImple();
+		return dao;
+
+	}
+
+	public static ApplicationInfoDAO getApplicationDAOImplInstance() {
+		ApplicationInfoDAO infoDAO = new ApplicationInfoDAOImpl();
+		return infoDAO;
+
+	}
+
+	public static LadDAO getLadDAOImplInstance() {
+		LadDAO ladDAO = new LadDAOImpl();
+		return ladDAO;
+
+	}
+
+	public static AdminServices getAdminServicesInstance() {
+		AdminServices adminServices = new AdminServicesImpl();
+		return adminServices;
+
+	}
+
+	public static ApplicationInfoService getApplicationInfoServiceInstance() {
+		ApplicationInfoService infoService = new ApplicationInfoServicesImpl();
+		return infoService;
+	}
+
+	public static LadServices getLadServiceInstance() {
+		LadServices ladServices = new LadServicesImpl();
+		return ladServices;
+
+	}
+
+
+}
+
+

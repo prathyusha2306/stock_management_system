@@ -1,0 +1,33 @@
+package com.jfsfeb.stockmanagementsystemjdbc.service;
+
+import com.jfsfeb.stockmanagementsystemjdbc.dto.DetailsOfStock;
+
+public class ManagerServiceImple implements ManagerService {
+
+	@Override
+	public boolean addStock(DetailsOfStock stockDetails) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean authenticateManager(String managerEmailId, String managerPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeStock(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
+}

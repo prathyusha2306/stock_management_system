@@ -1,0 +1,35 @@
+package com.jsfsfeb.stockmanagementsystemcollections.services;
+
+import com.jfsfeb.stockmanagementsystemcollections.factory.SMSFactory;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOManager;
+import com.jsfsfeb.stockmanagementsystemcollections.dto.DetailsOfStock;
+import com.jsfsfeb.stockmanagementsystemcollections.validation.ValidationSMS;
+
+public class ManagerServiceImple implements ManagerService {
+	ValidationSMS validation = new ValidationSMS();
+		 DAOManager manager= SMSFactory.getDAOManagerImpleInstance();
+		@Override
+		public boolean addStock(DetailsOfStock stockDetails) {
+
+			return manager.addStock(stockDetails);
+		}
+
+		@Override
+		public boolean removeStock(int id) {
+			
+			return manager.removeStock(id);
+		}
+
+		@Override
+		public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		
+			return manager.changePassword(emailId, oldPassword, newPassword);
+		}
+
+		@Override
+		public boolean authenticateManager(String managerEmailId, String managerPassword) {
+		
+			return manager.authenticateManager(managerEmailId, managerPassword);
+		}
+
+}

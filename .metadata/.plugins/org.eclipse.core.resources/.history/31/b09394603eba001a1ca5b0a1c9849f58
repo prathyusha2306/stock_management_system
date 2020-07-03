@@ -1,0 +1,34 @@
+package com.jsfsfeb.stockmanagementsystemcollections.services;
+
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOManager;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOManagerImple;
+import com.jsfsfeb.stockmanagementsystemcollections.dto.DetailsOfStock;
+
+public class ManagerServiceImple implements ManagerService {
+
+		 DAOManager manager=new DAOManagerImple();
+		@Override
+		public boolean addStock(DetailsOfStock stockDetails) {
+
+			return manager.addStock(stockDetails);
+		}
+
+		@Override
+		public boolean removeStock(int id) {
+			
+			return manager.removeStock(id);
+		}
+
+		@Override
+		public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		
+			return manager.changePassword(emailId, oldPassword, newPassword);
+		}
+
+		@Override
+		public boolean authenticateManager(String managerEmailId, String managerPassword) {
+		
+			return manager.authenticateManager(managerEmailId, managerPassword);
+		}
+
+}

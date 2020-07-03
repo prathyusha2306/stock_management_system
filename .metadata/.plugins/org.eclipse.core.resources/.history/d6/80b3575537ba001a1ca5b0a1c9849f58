@@ -1,0 +1,60 @@
+package com.jfsfeb.stockmanagementsystemcollections.factory;
+
+import com.jsfsfeb.stockmanagementsystemcollections.dao.AdminDAO;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.AdminDAOImple;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOInvestor;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOInvestorImple;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOManager;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOManagerImple;
+import com.jsfsfeb.stockmanagementsystemcollections.services.AdminService;
+import com.jsfsfeb.stockmanagementsystemcollections.services.AdminServiceImple;
+import com.jsfsfeb.stockmanagementsystemcollections.services.InvestorService;
+import com.jsfsfeb.stockmanagementsystemcollections.services.InvestorServiceImple;
+import com.jsfsfeb.stockmanagementsystemcollections.services.ManagerService;
+import com.jsfsfeb.stockmanagementsystemcollections.services.ManagerServiceImple;
+
+public class SMSFactory {
+
+	private SMSFactory() {
+
+	}
+
+	public static AdminDAO getAdminDAOImplInstance() {
+		AdminDAO dao = new AdminDAOImple();
+		return dao;
+
+	}
+
+	public static DAOInvestor getInvestorDAOImplInstance() {
+		DAOInvestor investor = new DAOInvestorImple();
+		return investor;
+
+	}
+
+	public static DAOManager getDAOManagerImplInstance() {
+		DAOManager manager = new DAOManagerImple();
+		return manager;
+
+	}
+
+	public static AdminService getAdminServicesInstance() {
+		AdminService adminService = new AdminServiceImple();
+		return adminService;
+
+	}
+
+	public static InvestorService getInvestorServiceInstance() {
+		InvestorService investorService = new InvestorServiceImple();
+		return investorService;
+	}
+
+	public static ManagerService getManagerServiceInstance() {
+		ManagerService ladServices = new ManagerServiceImple();
+		return ladServices;
+
+	}
+
+
+}
+
+

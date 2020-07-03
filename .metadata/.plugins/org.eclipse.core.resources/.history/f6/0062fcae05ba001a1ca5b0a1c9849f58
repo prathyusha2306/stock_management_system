@@ -1,0 +1,5 @@
+package com.jsfsfeb.stockmanagementsystemcollections.exception;
+
+public class ExceptionSMS {
+
+}

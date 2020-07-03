@@ -1,0 +1,50 @@
+package com.jsfsfeb.stockmanagementsystemcollections.services;
+
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOInvestor;
+import com.jsfsfeb.stockmanagementsystemcollections.dao.DAOInvestorImple;
+import com.jsfsfeb.stockmanagementsystemcollections.dto.DetailsOfStock;
+import com.jsfsfeb.stockmanagementsystemcollections.dto.Investor;
+import com.jsfsfeb.stockmanagementsystemcollections.validation.ValidationSMS;
+
+public class InvestorServiceImple implements InvestorService {
+	private DAOInvestor dao = new DAOInvestorImple();
+	ValidationSMS validation = new ValidationSMS();
+
+	@Override
+	public boolean registerInvestor(Investor investor) {
+      if(investor!=null) {
+		return dao.registerInvestor(investor);
+	}
+	return  ;
+	}
+
+	@Override
+	public boolean investorLogin(String emailId, String password) {
+		if (validation.validateEmail(emailId)) {
+			if (validation.validatePassword(password)) {
+
+				return dao.investorLogin(emailId, password);
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+
+		return dao.changePassword(emailId, oldPassword, newPassword);
+	}
+
+	@Override
+	public boolean sellStock(int stockId) {
+
+		return dao.sellStock(stockId);
+	}
+
+	@Override
+	public boolean buyStock(DetailsOfStock stock) {
+
+		return dao.buyStock(stock);
+	}
+
+}

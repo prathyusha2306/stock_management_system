@@ -1,0 +1,17 @@
+package com.jsfsfeb.stockmanagementsystemcollections.services;
+
+import java.util.List;
+
+import com.jsfsfeb.stockmanagementsystemcollections.dto.Investor;
+import com.jsfsfeb.stockmanagementsystemcollections.dto.Manager;
+
+public interface AdminService {
+
+	boolean authenticateAdmin(String email, String password);
+
+	boolean addInvestor(Investor investor);
+
+	boolean addCompanyManager(Manager manager);
+
+	List<Investor> viewInvestors();
+}
